@@ -1,0 +1,25 @@
+node () {
+    stage 'Setup'
+    git 'https://github.com/ngageoint/geopackage-java.git'
+   // git 'https://github.com/venicegeo/geopackage-wkb-java.git'
+   // git 'https://github.com/venicegeo/geopackage-core-java.git'
+    
+    
+    withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]){
+    stage('Archive') {
+    sh 'mvn clean install -DskipTests' 
+    
+   // stage 'Nexus-Upload'
+    // step([$class: 'NexusArtifactUploader',
+    // artifactId: 'geopackage', classifier: 'artifact',
+    // credentialsId: 'b9bc9cc5-871e-4738-88f3-9c3e5525a096',
+    // file: '/var/lib/jenkins/workspace/geopackage-jave/target/geopackage-1.2.2-javadoc.jar',
+   // groupId: 'mil.nga.geopackage',
+    // nexusUrl: '52.34.149.187:8081/nexus', 
+    // nexusVersion: 'NEXUS2', protocol: 'http',
+    // repository: 'releases', type: 'jar', version: '1.2.2']) 
+     
+ 
+    }
+   }
+  }
